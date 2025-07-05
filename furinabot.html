@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Discord Sign In Demo</title>
+</head>
+<body>
+  <h1>Sign in with Discord</h1>
+  <a id="login" href="#">Login with Discord</a>
+  <div id="user-info"></div>
+
+  <script>
+    const clientId = "YOUR_DISCORD_CLIENT_ID";
+    const redirectUri = "http://localhost:3000/callback";  // Your server’s callback
+
+    document.getElementById("login").addEventListener("click", () => {
+      const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=identify`;
+      window.location.href = authUrl;
+    });
+  </script>
+</body>
+</html>
