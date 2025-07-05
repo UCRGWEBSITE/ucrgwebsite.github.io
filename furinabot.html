@@ -3,16 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Discord Sign In Demo</title>
+  <title>Discord Sign In</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #5865f2;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 50px;
+    }
+    .card {
+      background: #23272a;
+      border-radius: 15px;
+      padding: 20px;
+      margin: auto;
+      max-width: 300px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    button {
+      background: #7289da;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #99aab5;
+    }
+    img {
+      border-radius: 50%;
+    }
+  </style>
 </head>
 <body>
-  <h1>Sign in with Discord</h1>
-  <a id="login" href="#">Login with Discord</a>
-  <div id="user-info"></div>
+  <div class="card">
+    <h1>Discord Sign In</h1>
+    <div id="user-info">
+      <button id="login">Login with Discord</button>
+    </div>
+  </div>
 
   <script>
     const clientId = "1307251583989583904";
-    const redirectUri = "http://localhost:3000/callback";  // Your server’s callback
+    const redirectUri = "http://localhost:3000/callback"; // Node server
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get("username");
+    const discriminator = urlParams.get("discriminator");
+    const avatar = urlParams.get("avatar");
+    const id = urlParams.get("id");
+
+    if (username && discriminator && id && avatar) {
+      document.getElementById("user-info").innerHTML = `
+        <p>Welcome, ${username}#${discriminator}</p>
+        <img src="https://cdn.discordapp.com/avatars/${id}/${avatar}.png" width="128" />
+      `;
+    }
 
     document.getElementById("login").addEventListener("click", () => {
       const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=identify`;
