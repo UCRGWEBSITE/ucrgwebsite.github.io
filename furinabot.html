@@ -11,8 +11,8 @@
   <div id="user-info"></div>
 
   <script>
-    const clientId = "YOUR_DISCORD_CLIENT_ID";
-    const redirectUri = "http://localhost:3000/callback";  // Your server’s callback
+    const clientId = "1307251583989583904";
+    const redirectUri = "https://ucrgwebsite.github.io/callback";  // Your server’s callback
 
     document.getElementById("login").addEventListener("click", () => {
       const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=identify`;
