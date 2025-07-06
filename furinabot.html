@@ -31,7 +31,7 @@
       margin-bottom: 20px;
     }
     button {
-      background-color: #4f8fe0;
+      background-color: #5865F2;
       color: white;
       border: none;
       padding: 10px 20px;
@@ -40,9 +40,14 @@
       cursor: pointer;
       margin-top: 10px;
       transition: background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: bold;
     }
     button:hover {
-      background-color: #79a6ff;
+      background-color: #7983f5;
     }
     input, textarea {
       width: 100%;
@@ -69,8 +74,11 @@
   <header>FurinaBot Dashboard</header>
   <div class="container">
     <div class="card" id="auth-section">
-      <div id="user-info">
-        <button id="login">Login with Discord</button>
+      <div id="user-info" style="text-align: center;">
+        <button id="login">
+          <img src="https://cdn.jsdelivr.net/gh/encharm/Font-Awesome-SVG-PNG/black/svg/discord.svg" width="24" height="24" />
+          Login with Discord
+        </button>
       </div>
     </div>
 
@@ -107,7 +115,7 @@
       `;
       document.getElementById("giveaway-form").style.display = "block";
 
-      // attach event listener only AFTER button is available
+      // attach event listener AFTER form is shown
       document.getElementById("start-giveaway").addEventListener("click", async () => {
         const prize = document.getElementById("prize").value;
         const prizeDesc = document.getElementById("prizeDesc").value;
@@ -143,7 +151,7 @@
     }
 
     document.getElementById("login").addEventListener("click", () => {
-      const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=identify`;
+      const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=identify%20guilds`;
       window.location.href = authUrl;
     });
   </script>
