@@ -82,6 +82,8 @@
       <textarea id="prizeDesc" placeholder="Describe the prize"></textarea>
       <label>Duration (minutes)</label>
       <input type="number" id="duration" placeholder="Duration">
+      <label>Channel ID</label>
+      <input type="text" id="channelId" placeholder="Giveaway Channel ID">
       <button id="start-giveaway">Start Giveaway</button>
       <div class="status" id="status"></div>
     </div>
@@ -115,8 +117,9 @@
       const prize = document.getElementById("prize").value;
       const prizeDesc = document.getElementById("prizeDesc").value;
       const duration = document.getElementById("duration").value;
+      const channelId = document.getElementById("channelId").value;
 
-      if (!prize || !prizeDesc || !duration) {
+      if (!prize || !prizeDesc || !duration || !channelId) {
         alert("Please fill in all fields.");
         return;
       }
@@ -131,6 +134,7 @@
             prize,
             prizeDesc,
             duration,
+            channelId,
             userId: id,
           }),
         });
