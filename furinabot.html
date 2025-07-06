@@ -106,44 +106,45 @@
         </div>
       `;
       document.getElementById("giveaway-form").style.display = "block";
+
+      // attach event listener only AFTER button is available
+      document.getElementById("start-giveaway").addEventListener("click", async () => {
+        const prize = document.getElementById("prize").value;
+        const prizeDesc = document.getElementById("prizeDesc").value;
+        const duration = document.getElementById("duration").value;
+        const channelId = document.getElementById("channelId").value;
+
+        if (!prize || !prizeDesc || !duration || !channelId) {
+          alert("Please fill in all fields.");
+          return;
+        }
+
+        try {
+          const response = await fetch("http://localhost:3000/api/create-giveaway", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              prize,
+              prizeDesc,
+              duration,
+              channelId,
+              userId: id,
+            }),
+          });
+          const text = await response.text();
+          document.getElementById("status").innerText = text;
+        } catch (err) {
+          console.error(err);
+          document.getElementById("status").innerText = "Error creating giveaway.";
+        }
+      });
     }
 
     document.getElementById("login").addEventListener("click", () => {
       const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=identify`;
       window.location.href = authUrl;
-    });
-
-    document.getElementById("start-giveaway").addEventListener("click", async () => {
-      const prize = document.getElementById("prize").value;
-      const prizeDesc = document.getElementById("prizeDesc").value;
-      const duration = document.getElementById("duration").value;
-      const channelId = document.getElementById("channelId").value;
-
-      if (!prize || !prizeDesc || !duration || !channelId) {
-        alert("Please fill in all fields.");
-        return;
-      }
-
-      try {
-        const response = await fetch("http://localhost:3000/api/create-giveaway", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            prize,
-            prizeDesc,
-            duration,
-            channelId,
-            userId: id,
-          }),
-        });
-        const text = await response.text();
-        document.getElementById("status").innerText = text;
-      } catch (err) {
-        console.error(err);
-        document.getElementById("status").innerText = "Error creating giveaway.";
-      }
     });
   </script>
 </body>
