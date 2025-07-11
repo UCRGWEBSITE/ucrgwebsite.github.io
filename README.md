@@ -9,7 +9,7 @@ Furina is a multi-functional Discord moderation and utility bot, designed to bri
 ### ✅ Core Commands
 - 🎁 **Giveaways** — Start giveaways in any channel (in or out of server)
 - ⚙️ **Moderation Menu** — Slash-command based kick, ban, timeout (with ModMenu)
-- 📬 **ModMail** — Private messaging between users and staff, via buttons
+- 📬 **ModMail** — Private messaging between users and staff, via buttons (In development)
 
 ---
 
@@ -23,12 +23,12 @@ Furina is a multi-functional Discord moderation and utility bot, designed to bri
 - 🔍 **AutoMod Detection**
   - Block scam links or Discord invites
   - Prevent phishing or unwanted spam
-- 🖥️ **Server Info** — Display server name, member count, creation date, etc.
-- 🤖 **Bot Info** — Latency, uptime, shard info, and version
+- 🖥️ **Server Info** — Display server name, member count, creation date, etc. (In development)
+- 🤖 **Bot Info** — Latency, uptime, shard info, and version (In development)
 
 ---
 
-## 🧰 Customizable Features
+## 🧰 Customizable Features (In development)
 - 👋 **Welcome Message** — Slash command setup for join messages
 - 📋 **Logging Channel** — Let each server pick their logging channel
 - 📜 **Custom Embedded Rules** — Embed your server's rules in a stylish message
@@ -49,7 +49,7 @@ Furina is a multi-functional Discord moderation and utility bot, designed to bri
 
 1. [Invite the Bot](https://discord.com/oauth2/authorize?client_id=1269652221427974154&scope=bot%20applications.commands&permissions=68719476735&redirect_uri=https%3A%2F%2Fucrgwebsite.github.io%2Ffurinabot.html&response_type=code)
 2. Create a channel named `furina-logs` (optional for invite logs)
-3. Use `/setlog`, `/setmodmail`, `/setwelcome`, etc. to configure features
+3. Use `/setlog`, `/setmodmail`, `/setwelcome`, etc. to configure features (In development)
 4. Optional: Visit the [Dashboard](https://ucrgwebsite.github.io/furinabot.html) for web setup
 
 ---
